@@ -9,6 +9,42 @@
       type="module"
       src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"
     ></script>
+    <script type="module">
+      const modelViewer = document.querySelector("model-viewer");
+
+      modelViewer.addEventListener("load", () => {
+        // const material = modelViewer.model.materials[0];
+        /*  console.log(
+          "modelViewer.model.materials :>> ",
+          modelViewer.model.materials
+        );
+
+        const texture = modelViewer.createVideoTexture("navigasyon.mp4");
+        const material = modelViewer.model.getMaterialByName("Tire #9");
+        const { baseColorTexture } = material.pbrMetallicRoughness;
+        baseColorTexture.setTexture(texture); */
+        /*  const createAndApplyTexture = async (channel) => {
+          const texture = await modelViewer.createVideoTexture(
+            "navigasyon.mp4"
+          );
+          if (channel.includes("base") || channel.includes("metallic")) {
+            material.pbrMetallicRoughness[channel].setTexture(texture);
+          } else {
+            material[channel].setTexture(texture);
+          }
+        };
+
+        const changeColor = (event) => {
+          createAndApplyTexture("baseColorTexture");
+        };
+
+        const resetTexture = () => {
+          material.pbrMetallicRoughness["baseColorTexture"].setTexture(
+            existingTexture
+          );
+        }; */
+      });
+    </script>
   </head>
   <body>
     <main class="w-full h-screen bg-black">
@@ -16,6 +52,7 @@
         class="w-full h-screen bg-[url(./bg.jpg)] bg-contain bg-center bg-no-repeat overflow-hidden flex items-center justify-center"
       >
         <model-viewer
+          id="model-viewer"
           class="w-full h-screen"
           alt="Saha Robotik robot"
           src="CORIER.glb"
@@ -30,6 +67,7 @@
           disable-zoom
           auto-rotate
           disable-pan
+          on
         ></model-viewer>
       </div>
     </main>
