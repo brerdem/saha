@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saha Robotik</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      type="module"
+      src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"
+    ></script>
+    <script type="module">
+      const modelViewer = document.querySelector("model-viewer");
+
+      modelViewer.addEventListener("load", () => {
+        // const material = modelViewer.model.materials[0];
+        /*  console.log(
+          "modelViewer.model.materials :>> ",
+          modelViewer.model.materials
+        ); */
+
+        const texture = modelViewer.createVideoTexture("navigasyon.mp4");
+
+        const material = modelViewer.model.getMaterialByName("Black_Screen");
+        console.log("material :>> ", material);
+        const { baseColorTexture, baseColorFactor } =
+          material.pbrMetallicRoughness;
+        material.pbrMetallicRoughness.setBaseColorFactor([0.5, 0.5, 0.5, 0.0]);
+        baseColorTexture.setTexture(texture);
+        //texture.sampler.setRotation(Math.PI / 2);
+
+        /*  const createAndApplyTexture = async (channel) => {
+          const texture = await modelViewer.createVideoTexture(
+            "navigasyon.mp4"
+          );
+          if (channel.includes("base") || channel.includes("metallic")) {
+            material.pbrMetallicRoughness[channel].setTexture(texture);
+          } else {
+            material[channel].setTexture(texture);
+          }
+        };
+
+        const changeColor = (event) => {
+          createAndApplyTexture("baseColorTexture");
+        };
+
+        const resetTexture = () => {
+          material.pbrMetallicRoughness["baseColorTexture"].setTexture(
+            existingTexture
+          );
+        }; */
+      });
+    </script>
+  </head>
+  <body>
+    <main class="w-full h-screen bg-black">
+      <div
+        class="w-full h-screen bg-[url(./bg.jpg)] bg-contain bg-center bg-no-repeat overflow-hidden flex items-center justify-center"
+      >
+        <model-viewer
+          id="model-viewer"
+          class="w-full h-screen"
+          alt="Saha Robotik robot"
+          src="phone.glb"
+          shadow-intensity="1"
+          camera-controls
+          touch-action="pan-y"
+          camera-orbit="45deg 75deg 4m"
+          max-camera-orbit="135deg 75deg 5m"
+          min-camera-orbit="-135deg 75deg 5m"
+          max-field-of-view="100deg"
+          min-field-of-view="0deg"
+          disable-zoom
+          auto-rotate
+          disable-pan
+          on
+        ></model-viewer>
+      </div>
+    </main>
+  </body>
+</html>
