@@ -10,13 +10,16 @@
       src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"
     ></script>
     <script type="module">
-      const modelViewer = document.querySelector("model-viewer");
+      const modelViewer = document.querySelector("model-viewer#viewer");
+      const scaleFactor = 0.85;
 
       modelViewer.addEventListener("load", () => {
+        console.log("modelViewer :>> ", modelViewer);
         modelViewer.play({
           repetitions: 0,
           pingpong: true,
         });
+        //modelViewer.scale = `${scaleFactor} ${scaleFactor} ${scaleFactor}`;
 
         // const material = modelViewer.model.materials[0];
         /*  console.log(
@@ -43,16 +46,16 @@
         class="w-full h-screen bg-[url(./bg.jpg)] bg-contain bg-center bg-no-repeat overflow-hidden flex items-center justify-center"
       >
         <model-viewer
-          id="model-viewer"
+          id="viewer"
           class="w-full h-screen"
           alt="Saha Robotik robot"
           src="courier.glb"
           shadow-intensity="1"
           camera-controls
           touch-action="pan-y"
-          camera-orbit="180deg 0deg 110%"
-          max-camera-orbit="100% 75deg 110%"
-          min-camera-orbit="100% 75deg 110%"
+          camera-orbit="180deg 80deg 130%"
+          max-camera-orbit="100% 80deg 130%"
+          min-camera-orbit="100% 80deg 130%"
           disable-zoom
           auto-rotate
           disable-pan
