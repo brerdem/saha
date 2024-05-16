@@ -23,13 +23,13 @@
 
         const material = modelViewer.model.getMaterialByName("Black_Screen");
         console.log("material :>> ", material);
-        const { baseColorTexture, baseColorFactor } =
+        const {baseColorTexture, baseColorFactor} =
           material.pbrMetallicRoughness;
         material.pbrMetallicRoughness.setBaseColorFactor([0.5, 0.5, 0.5, 0.0]);
         baseColorTexture.setTexture(texture);
         //texture.sampler.setRotation(Math.PI / 2);
 
-        /*  const createAndApplyTexture = async (channel) => {
+        const createAndApplyTexture = async (channel) => {
           const texture = await modelViewer.createVideoTexture(
             "navigasyon.mp4"
           );
@@ -48,7 +48,7 @@
           material.pbrMetallicRoughness["baseColorTexture"].setTexture(
             existingTexture
           );
-        }; */
+        };
       });
     </script>
   </head>
